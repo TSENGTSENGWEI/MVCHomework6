@@ -10,16 +10,26 @@ namespace MVCHomework6.Data.Database
     public partial class Articles
     {
         public Guid Id { get; set; }
+
         [Required]
         [StringLength(100)]
         public string Title { get; set; }
+
         [Required]
         public string Body { get; set; }
+
         [Required]
         [StringLength(250)]
         public string CoverPhoto { get; set; }
+
         [Column(TypeName = "datetime")]
         public DateTime CreateDate { get; set; }
+
         public string Tags { get; set; }
+
+        public string OnGetTag(string tag)
+        {
+            return "http://www.google.com.tw";
+        }
     }
 }

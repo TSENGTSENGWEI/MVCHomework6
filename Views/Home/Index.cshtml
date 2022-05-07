@@ -1,9 +1,12 @@
-﻿
+﻿@*@model IEnumerable<MVCHomework6.Data.Database.Articles>*@
+@model PagedList<MVCHomework6.Data.Database.Articles>
+@using X.PagedList;
+@using X.PagedList.Mvc;
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="card mt-5">
+@*<div class="card mt-5">
     <img src="//fakeimg.pl/750x300/868e96/fff" class="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title">Post title</h5>
@@ -51,22 +54,25 @@
     <div class="card-footer text-muted">
         Posted on @DateTime.Now.ToString("yyyy-MM-dd") by me
     </div>
-</div>
+</div>*@
 
-@*@foreach(var item in Model.Articles)
+
+
+@foreach(var item in Model)
 {
     <div class="card mb-4">
         <img class="card-img-top" src="@item.CoverPhoto" alt="@item.Title">
         <div class="card-body">
             <h2 class="card-title">@item.Title</h2>
-            <p class="card-text">@Html.Raw(item.Body)</p>
-            <a href="#" class="btn btn-primary">@item.Tags</a>
+            <p class="card-text">@Html.Raw(item.Body)</p>           
+            @Html.Partial("_tag",item)
+            
         </div>
     </div>
     <div class="card-footer text-muted">   
         Posted on @item.CreateDate.ToString("yyyy-MM-dd") by me
     </div>
-}*@
+}
 
 
 <nav class="mt-4">
@@ -74,9 +80,26 @@
         <li class="page-item disabled">
             <a class="page-link">Previous</a>
         </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-id="1">1</a></li>
+        <li class="page-item"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-id="2">2</a></li>
+        <li class="page-item"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-id="3">3</a></li>
+        <li class="page-item"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-id="4">4</a></li>
+        <li class="page-item"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-id="5">5</a></li>
+        <li class="page-item"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-id="6">6</a></li>
+        <li class="page-item"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-id="7">7</a></li>
+        <li class="page-item"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-id="8">8</a></li>
+        <li class="page-item"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-id="9">9</a></li>
+        <li class="page-item"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-id="10">10</a></li>
+        <li class="page-item"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-id="11">11</a></li>
+        <li class="page-item"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-id="12">12</a></li>
+        <li class="page-item"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-id="13">13</a></li>
+        <li class="page-item"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-id="14">14</a></li>
+        <li class="page-item"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-id="15">15</a></li>
+        <li class="page-item"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-id="16">16</a></li>
+        <li class="page-item"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-id="17">17</a></li>
+        <li class="page-item"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-id="18">18</a></li>
+        <li class="page-item"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-id="19">19</a></li>
+        <li class="page-item"><a class="page-link" asp-controller="Home" asp-action="Index" asp-route-id="20">20</a></li>
         <li class="page-item">
             <a class="page-link" href="#">Next</a>
         </li>

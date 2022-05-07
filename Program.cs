@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using MVCHomework6.Data;
 using MVCHomework6.Data.Database;
@@ -8,6 +9,7 @@ builder.Services.AddDbContext<BlogDbContext>(options => options.UseInMemoryDatab
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<IActionContextAccessor, ActionContextAccessor>();
 
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
