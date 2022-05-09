@@ -21,15 +21,27 @@ namespace MVCHomework6.Controllers
 
         public IActionResult Index()
         {
+            var model = new ViewModelBase()
+            {
+                ArticlesViewModel = _context.Articles.ToPagedList(1, pageSize),
+                TagClouldViewModel = _context.TagCloud.ToList(),
+            };
             //這是範例，已經塞了20筆資料進去
-            var model = _context.Articles.ToPagedList(1, pageSize);
+            //var model = _context.Articles.ToPagedList(1, pageSize);
             return View(model);
         }
 
         [Route("Index/{id?}")]
         public IActionResult Index(int id)
         {
-            var model = _context.Articles.ToPagedList(id, pageSize);
+            if (id <= 0) id = 1;
+            var model = new ViewModelBase()
+            {
+                ArticlesViewModel = _context.Articles.ToPagedList(id, pageSize),
+                TagClouldViewModel = _context.TagCloud.ToList(),
+            };
+
+            //var model = _context.Articles.ToPagedList(id, pageSize);
             return View(model);
         }
 

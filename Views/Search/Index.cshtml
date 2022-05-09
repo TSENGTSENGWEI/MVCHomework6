@@ -1,0 +1,22 @@
+﻿@model MVCHomework6.Data.ViewModelBase
+@using X.PagedList;
+@using X.PagedList.Mvc;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@foreach(var item in Model.ArticlesViewModel)
+{
+    <div class="card mb-4">
+        <img class="card-img-top" src="@item.CoverPhoto" alt="@item.Title">
+        <div class="card-body">
+            <h2 class="card-title">@item.Title</h2>
+            <p class="card-text">@Html.Raw(item.Body)</p>           
+            @Html.Partial("_tag",item)
+            
+        </div>
+    </div>
+    <div class="card-footer text-muted">   
+        Posted on @item.CreateDate.ToString("yyyy-MM-dd") by me
+    </div>
+}
+

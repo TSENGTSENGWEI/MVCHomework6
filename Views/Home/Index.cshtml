@@ -1,5 +1,5 @@
 ﻿@*@model IEnumerable<MVCHomework6.Data.Database.Articles>*@
-@model PagedList<MVCHomework6.Data.Database.Articles>
+@model MVCHomework6.Data.ViewModelBase
 @using X.PagedList;
 @using X.PagedList.Mvc;
 @{
@@ -58,7 +58,7 @@
 
 
 
-@foreach(var item in Model)
+@foreach(var item in Model.ArticlesViewModel)
 {
     <div class="card mb-4">
         <img class="card-img-top" src="@item.CoverPhoto" alt="@item.Title">

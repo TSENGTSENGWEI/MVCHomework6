@@ -9,9 +9,16 @@ namespace MVCHomework6.Data.Database
     public partial class TagCloud
     {
         public Guid Id { get; set; }
+
         [Required]
         [StringLength(100)]
         public string Name { get; set; }
+
         public int Amount { get; set; }
+
+        public string OnGetTag(string tag)
+        {
+            return "http://www.google.com.tw";
+        }
     }
 }
