@@ -15,10 +15,5 @@ namespace MVCHomework6.Data.Database
         public string Name { get; set; }
 
         public int Amount { get; set; }
-
-        public string OnGetTag(string tag)
-        {
-            return "http://www.google.com.tw";
-        }
     }
 }

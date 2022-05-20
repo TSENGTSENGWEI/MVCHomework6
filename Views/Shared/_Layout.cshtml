@@ -1,5 +1,4 @@
-﻿@model MVCHomework6.Data.ViewModelBase
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -42,29 +41,20 @@
                     Search
                 </div>
                 <div class="card-body">
-                    <form asp-controller="Search" asp-action="Index" method="get">
-                        <div class="input-group mb-3">
-                            <input type="text" name="SearchString" class="form-control" placeholder="Search for...">
-                            <button class="btn btn-outline-secondary">Go!</button>
-                        </div>
-                    </form>
-                </div>
+                     <form  method="get" asp-action="FindSearch">
+                          <div class="input-group mb-3">
+                              <input  name="SearchString" class="form-control" value="@ViewData["SearchContext"]" placeholder="Search for...">                                                                                                
+                              <button type="submit" class="btn btn-primary" >Go!</button>
+                          </div>
+                     </form>
+                 </div>
             </div>
             <div class="card mb-1"  >
                 <div class="card-header" >
                     Tags
                 </div>
-                <div class="card-body">                    
-                      <ul>
-                        @{                            
-                            foreach(var item in Model.TagClouldViewModel)
-                            {
-                                <li class="d-inline p-2">                                    
-                                    <a href="@item.OnGetTag(@item.Name)">@item.Name (@item.Amount)</a>
-                                </li>
-                            }
-                        }    
-                     </ul>
+                <div class="card-body">  
+                    <vc:tag-colud></vc:tag-colud>            
                 </div>
             </div>
             <div class="card mb-1">

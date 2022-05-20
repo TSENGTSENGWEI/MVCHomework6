@@ -20,17 +20,31 @@ namespace MVCHomework6.Helper.Tag
 
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
-            output.TagName = "a";
+            output.TagName = "ul";
 
             var actionContext = Accessor.ActionContext;
+            if (actionContext == null) throw new ArgumentException("Context=null");
             var urlHelper = UrlHelperFactory.GetUrlHelper(actionContext);
             //
 
             var childContent = await output.GetChildContentAsync();
             var content = childContent.GetContent();
 
-            output.Attributes.SetAttribute("href", "http://www.google.com.tw");
-            output.Content.SetContent(content);
+            var TagList = content.Split(',');
+            var String = string.Empty;
+
+            String = String + $"<li>";
+            foreach (var tag in TagList)
+            {
+                var ActionURL = $@"""{urlHelper.Action(new UrlActionContext() { Controller = "Home", Action = "FindTag", Values = new { tag = tag } })}""";
+                String = String + $@"<a href={ActionURL} class=""{"d-Inline p-2"}"">{tag}</a> ";
+            }
+
+            //output.Attributes.SetAttribute("href", urlHelper.Action(new UrlActionContext() { Controller = "Home", Action = "FindTag", Values = new { tag = content } }));
+            String = String + $"</li>";
+            output.Content.SetHtmlContent(String);
+
+            output.TagMode = TagMode.StartTagAndEndTag;
         }
     }
 }

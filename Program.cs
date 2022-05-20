@@ -10,7 +10,8 @@ builder.Services.AddDbContext<BlogDbContext>(options => options.UseInMemoryDatab
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IActionContextAccessor, ActionContextAccessor>();
-builder.Services.AddRazorPages();
+
+//builder.Services.AddRazorPages();
 
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
@@ -48,5 +49,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.MapRazorPages();
+//app.MapRazorPages();
 app.Run();

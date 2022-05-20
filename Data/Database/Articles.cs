@@ -9,6 +9,14 @@ namespace MVCHomework6.Data.Database
 {
     public partial class Articles
     {
+        public Articles()
+        {
+            Title = String.Empty;
+            Body = String.Empty;
+            CoverPhoto = String.Empty;
+            Tags = String.Empty;
+        }
+
         public Guid Id { get; set; }
 
         [Required]
@@ -26,10 +34,5 @@ namespace MVCHomework6.Data.Database
         public DateTime CreateDate { get; set; }
 
         public string Tags { get; set; }
-
-        public string OnGetTag(string tag)
-        {
-            return "http://www.google.com.tw";
-        }
     }
 }

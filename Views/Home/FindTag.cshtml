@@ -1,0 +1,14 @@
+﻿@model IEnumerable<MVCHomework6.Data.Database.Articles>
+@using X.PagedList;
+@using X.PagedList.Mvc;
+@using X.PagedList.Mvc.Core
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "FindTag";
+}
+
+ <partial name="_Articles" model="Model">
+ 
+ @Html.PagedListPager((IPagedList)Model,x=> Url.Action("FindTag",new { tag=@ViewData["tag"],page= x }))
